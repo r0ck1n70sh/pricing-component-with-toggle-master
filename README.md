@@ -4,4 +4,4 @@
 ![Design preview for the Pricing component with toggle coding challenge](./design/desktop-preview.jpg)
 
 ## Deployement
-[Netlify]()
+[Netlify]("https://wonderful-raman-9ee077.netlify.app/")
