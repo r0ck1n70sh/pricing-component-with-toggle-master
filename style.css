@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+
+:root {
+	--very-light-grayish-blue: hsl(240, 78%, 98%);
+	--light-grayish-blue: hsl(234, 14%, 74%);
+	--grayish-blue: hsl(233, 13%, 33%);
+	--dark-grayish-blue: hsl(232, 13%, 33%);
+	--pure-blue: hsl(237, 63%, 64%);
+
+	--background-gradient-color: linear-gradient(hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+}
+
+body {
+	font-size: 15px;
+	font-family: "Montserrat", sans-serif;
+	color: var(--light-grayish-blue);
+
+	background-color: var(--very-light-grayish-blue);
+
+	background-image: url("/images/bg-bottom.svg"), url("/images/bg-top.svg");
+	background-position: bottom left, top right;
+	background-repeat: no-repeat;
+}
+
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1em;
+	padding: 1em;
+}
+
+button {
+	font-family: "Monteserrat", sans-serif;
+}
+
+.main-wrapper {
+	display: grid;
+	grid-template-columns: repeat(27, 1fr);
+	grid-template-rows: repeat(6, 1fr);	
+
+	text-align: center;
+	align-items: center;
+}
+
+#main-heading {
+	grid-column: 13 / 16;
+	grid-row: 1 / 2;
+	color: var(--grayish-blue);
+}
+
+#pricing-toggle {
+	position: relative;
+	margin: auto;
+
+	grid-column: 14 / 15;
+	grid-row: 2 / 3;
+
+	cursor: pointer;
+}
+
+#heading-annually {
+	grid-column: 13 / 14;
+	grid-row: 2 / 3;
+}
+
+#heading-monthly {
+	grid-column: 15 / 16;
+	grid-row: 2 / 3;
+}
+
+#pricing-toggle:before {
+	position: absolute;
+	top:-0.5em; bottom:0; right:0; left:-1.5em;
+	content: "";
+
+	width: 4em; height: 2em;
+	background: var(--light-grayish-blue);
+
+	border-radius: 1em;
+
+	transition: 0.4s;
+}
+
+#pricing-toggle:after {
+	position: absolute;
+	top: -0.25em; left: -1.25em;
+	content: "";
+	
+	width: 1.5em; height: 1.5em;
+	background-color: #fff;
+
+	border-radius: 50%;
+
+	transition: 0.4s;
+}
+
+.monthly {
+	display: none;
+}
+
+.annually {
+	display: block;
+}
+
+#pricing-toggle:checked:after {
+	transform: translateX(2em);
+}
+
+#pricing-toggle:checked:before {
+	background: var(--background-gradient-color);
+}
+
+#pricing-toggle:checked ~ .card-wrapper .card .card-pricing .monthly {
+	display: block;
+}
+
+#pricing-toggle:checked ~ .card-wrapper .card .card-pricing .annually {
+	display: none;
+}
+
+.card-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+
+	grid-column: 1 / 28;
+	grid-row: 3 / 7;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+
+	text-align: center;
+	justify-content: center;
+
+	background-color: #fff;
+	padding: 2em;
+	border-radius: 0.5em;
+
+	box-shadow: 0px 0px 10px 0px #000;
+}
+
+.card-heading {
+	color: var(--grayish-blue);
+	padding: 1em;
+}
+
+.card-pricing {
+	color: var(--grayish-blue);
+	font-size: 3em;
+}
+
+.card-content-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 2em;
+}
+
+.card-content-wrapper .card-content:first-child {
+	border-top: 1px solid var(--light-grayish-blue);
+}
+
+.card-content {
+	padding: 1em;
+	border-bottom: 1px solid var(--light-grayish-blue);
+	width: 100%;
+}
+
+.card-button {
+	background: var(--background-gradient-color);
+	color: #fff;
+
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+
+	border: none;
+	border-radius: 0.5em;
+
+	padding: 1em;
+	width: 100%;
+}
+
+.card-button:hover {
+	background: none;
+	color: var(--pure-blue);
+	border: 1px solid var(--light-grayish-blue);
+}
+
+.card-active {
+	background: var(--background-gradient-color);
+	color: #fff;
+
+	box-shadow: 0px 0px 20px 0px var(--pure-blue);
+    z-index: 1;
+    transform: scale(1.05);
+}
+
+.card-active .card-heading {
+	color: #fff;
+}
+
+.card-active .card-pricing {
+	color: #fff;
+}
+
+.card-active .card-button {
+	background: #fff;
+	color: #000;
+}
+
+.card-active .card-button:hover {
+	background: none;
+	color: #fff;
+}
+
+.attribution {
+	padding: 1em;
+	text-align: center;
+}
+
+@media (max-width: 375px) {
+	.main-wrapper{
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(11, 1fr);
+	}
+
+	#main-heading {
+		grid-column: 1 / 4;
+		grid-row: 1 / 2;
+	}
+
+	#heading-annually {
+		grid-column: 1 / 2;
+		grid-row: 2 / 3;
+	}
+
+	#heading-monthly{
+		grid-column: 3 / 4;
+		grid-row: 2 / 3;
+	}
+
+	#pricing-toggle {
+		grid-column: 2 / 3;
+		grid-row: 2 / 3;
+	}
+
+	.card-wrapper{
+		flex-direction: column;
+		justify-content: space-between;
+
+		grid-column:  1 / 4;
+		grid-row: 3 / 12;
+	}	
+}
